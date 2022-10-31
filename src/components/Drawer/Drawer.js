@@ -1,12 +1,19 @@
 import {
-  Button, Drawer as AntDrawer, Form, Input, Select,
+  Button, Drawer as AntDrawer, Form, Input, message, Select,
 } from 'antd';
-import { ColorPicker } from './ColorPicker.style.js';
-import { userId } from '../config';
+import { useState } from 'react';
+import { ColorPicker } from './ColorPicker.style';
+import { userId } from '../../config';
+import { getTrackables } from '../common/fetchFunctions';
 
 const { Option } = Select;
 
-function Drawer({ onClose, open }) {
+function Drawer({ onClose, open, setTrackables }) {
+  const [quantitative, setQuantitative] = useState(false);
+
+  const toggleQuantitative = (value) => (value === 'quantitative' ? setQuantitative(true) : setQuantitative(false));
+  const [form] = Form.useForm();
+
   function addTrackable(newTrackable) {
     fetch('/trackables', {
       method: 'POST',
@@ -15,10 +22,13 @@ function Drawer({ onClose, open }) {
       },
       body: JSON.stringify(newTrackable),
     })
-      .then(
-        (res) => res.json(),
-      )
+      .then((response) => {
+        if (!response.ok) throw new Error('Network response was not OK');
+        message.success('Trackable created!');
+        getTrackables(setTrackables);
+      })
       .catch((error) => {
+        message.error('An error happened');
         console.log(`Error: ${error.message}`);
       }, []);
   }
@@ -27,8 +37,11 @@ function Drawer({ onClose, open }) {
     const newTrackable = values;
     newTrackable.user_id = userId;
     newTrackable.active = 1;
-    addTrackable(newTrackable);
-    console.log(newTrackable);
+    form.validateFields()
+      .then(() => {
+        addTrackable(newTrackable);
+        onClose();
+      });
   };
 
   return (
@@ -52,19 +65,21 @@ function Drawer({ onClose, open }) {
           label="How would you like to track it?"
           rules={[{ required: true, message: 'Please select an option' }]}
         >
-          <Select placeholder="Please select an option">
+          <Select placeholder="Please select an option" onChange={toggleQuantitative}>
             <Option value="boolean">I would like to answer yes or no</Option>
             <Option value="quantitative">I would like to add a measurement</Option>
             <Option value="rating">I would like to rate it</Option>
           </Select>
         </Form.Item>
-        <Form.Item
-          name="unit"
-          label="What's the unit of measurement?"
-          rules={[{ required: true }]}
-        >
-          <Input type="text" />
-        </Form.Item>
+        { quantitative ? (
+          <Form.Item
+            name="unit"
+            label="What's the unit of measurement?"
+            rules={[{ required: true, message: 'Please add a unit to your measurement. Some examples are: cm, kg, hours, liters, times, cups.' }]}
+          >
+            <Input type="text" />
+          </Form.Item>
+        ) : '' }
         <Form.Item
           name="color"
           label="Pick a color"
@@ -72,7 +87,7 @@ function Drawer({ onClose, open }) {
         >
           <ColorPicker type="color" />
         </Form.Item>
-        <Button onClick={onClose} type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit">
           Create
         </Button>
       </Form>

@@ -9,8 +9,5 @@ export const ColorPicker = styled(Input)`
     width: 100px;
     height: 100px;
     border: none;
-    ::selection {
-      background: none;
-    }
   }
 `;

@@ -6,8 +6,9 @@ import { userId } from './config';
 import Container from './components/common/Container.style';
 import Calendar from './components/Calendar/Calendar';
 import Trackables from './components/Trackables/Trackables';
-import Drawer from './components/Drawer';
+import Drawer from './components/Drawer/Drawer';
 import './App.less';
+import { getTrackables } from './components/common/fetchFunctions';
 
 const { Header, Content } = Layout;
 
@@ -15,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const [date, setDate] = useState(dayjs());
   const [open, setOpen] = useState(false);
+  const [trackables, setTrackables] = useState([]);
 
   const showDrawer = () => {
     setOpen(true);
@@ -23,6 +25,10 @@ function App() {
   const onClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    getTrackables(setTrackables);
+  }, []);
 
   useEffect(() => {
     fetch(`/users/${userId}`)
@@ -40,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <Drawer open={open} onClose={onClose} />
+        <Drawer open={open} onClose={onClose} setTrackables={setTrackables} />
         <Header className="app-header">
           <Container>
             <div>
@@ -51,7 +57,7 @@ function App() {
         </Header>
         <Content>
           <Container>
-            <Trackables date={date} onChange={setDate} showDrawer={showDrawer} />
+            <Trackables date={date} onChange={setDate} showDrawer={showDrawer} trackables={trackables} />
             <Calendar date={date} onChange={setDate} />
           </Container>
         </Content>
