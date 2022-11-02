@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import BooleanInput from './BooleanInput';
-import QuantitativeInput from './QuantitativeInput';
+import QuantitativeInput from './QuantitativeInput/QuantitativeInput';
 import { YesEntry, NoEntry } from './BooleanEntry';
 
 const componentTypes = {
@@ -25,7 +25,6 @@ export default function Entry({
 
   const addEntry = (value) => {
     const newEntry = { trackable_id: trackable.id, date: date.toISOString().slice(0, 10), ...value };
-    console.log(newEntry);
     fetch('/entries', {
       method: 'POST',
       headers: {
@@ -38,9 +37,8 @@ export default function Entry({
         message.success('Entry added');
         onChange(setDayEntries, date);
       })
-      .catch((error) => {
+      .catch(() => {
         message.error('An error happened');
-        console.log(`Error: ${error.message}`);
       }, []);
   };
 

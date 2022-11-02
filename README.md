@@ -14,6 +14,9 @@ You can find all the working API routes in [this document](https://docs.google.c
 
 In the project directory, you can run:
 
+### `npm install`
+Get started by installing everything you need from the package.json
+
 ### `npm start`
 
 Runs the app in the development mode.\

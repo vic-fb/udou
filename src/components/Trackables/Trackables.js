@@ -1,32 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
-import Entry from './Entry';
+import dayjs from 'dayjs';
+import Entry from './components/Entry/Entry';
 import {
-  StyledCollapse, StyledPanel, Wrapper,
+  StyledCollapse, DateBar, Wrapper, Dot,
 } from './Trackables.style';
-import { Dot } from './Dot.style';
-import { getEntries } from '../common/fetchFunctions';
+import { getEntries, getTrackables } from '../../common/fetch-functions';
+import AddTrackable from './components/AddTrackable/AddTrackable';
 
-export default function Trackables({ date, showDrawer, trackables }) {
+const { Panel } = StyledCollapse;
+
+export default function Trackables({ date }) {
   const [dayEntries, setDayEntries] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [trackables, setTrackables] = useState([]);
   const getTrackableEntry = (id) => dayEntries.find((entry) => id === entry.trackable_id);
   const isVisible = ({ active, id }) => active || !!getTrackableEntry(id);
 
   useEffect(() => {
-    getEntries(setDayEntries, date);
+    getEntries(date)
+      .then(setDayEntries);
   }, [date]);
 
+  useEffect(() => {
+    getTrackables()
+      .then(setTrackables);
+  }, []);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
     <Wrapper>
+      <AddTrackable open={open} onClose={onClose} setTrackables={setTrackables} />
+      <DateBar>
+        {dayjs(date).format('dddd, MMMM D, YYYY')}
+      </DateBar>
       <StyledCollapse
         bordered={false}
         defaultActiveKey={[1]}
       >
         {
           trackables.map((trackable) => isVisible(trackable) && (
-            <StyledPanel header={trackable.name} key={trackable.id + date} extra={<Dot color={trackable.color} />}>
+            <Panel header={trackable.name} key={trackable.id + date} extra={<Dot color={trackable.color} />}>
               <Entry trackable={trackable} entry={getTrackableEntry(trackable.id)} date={date} onChange={getEntries} setDayEntries={setDayEntries} />
-            </StyledPanel>
+            </Panel>
           ))
         }
       </StyledCollapse>

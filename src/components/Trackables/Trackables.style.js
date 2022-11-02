@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 import { Collapse as AntdCollapse } from 'antd';
 
-const { Panel } = AntdCollapse;
-
 export const Wrapper = styled.div`
-  width: 60%;
   min-height: 60vh;
-  padding: 40px 40px 0 0;
+  padding: 25px 0 0 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  
+  @media (min-width: 900px) {
+    padding: 40px 40px 0 0;
+    width: 60%;
+}
 `;
 
 export const StyledCollapse = styled(AntdCollapse)`
@@ -21,16 +24,19 @@ export const StyledCollapse = styled(AntdCollapse)`
   }
   border-radius: 10px;
   margin-bottom: 15px;
+  margin-top: 15px;
 `;
 
-export const StyledPanel = styled(Panel)`
-  //.ant-collapse-item {
-  //  margin: 20px;
-  //  border: none;
-  //  background-color: white;
-  //}
+export const DateBar = styled.div`
+  background-color: lightgrey;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
 `;
 
-export const ButtonWrapper = styled.div`
-  text-align: right;
+export const Dot = styled.div`
+  background-color: ${(props) => props.color};
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
   `;

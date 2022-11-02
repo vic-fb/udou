@@ -2,13 +2,13 @@ import {
   Button, Drawer as AntDrawer, Form, Input, message, Select,
 } from 'antd';
 import { useState } from 'react';
-import { ColorPicker } from './ColorPicker.style';
-import { userId } from '../../config';
-import { getTrackables } from '../common/fetchFunctions';
+import { ColorPicker, ColorPickerWrapper } from './AddTrackable.style';
+import { userId } from '../../../../config';
+import { getTrackables } from '../../../../common/fetch-functions';
 
 const { Option } = Select;
 
-function Drawer({ onClose, open, setTrackables }) {
+function AddTrackable({ onClose, open, setTrackables }) {
   const [quantitative, setQuantitative] = useState(false);
 
   const toggleQuantitative = (value) => (value === 'quantitative' ? setQuantitative(true) : setQuantitative(false));
@@ -27,9 +27,8 @@ function Drawer({ onClose, open, setTrackables }) {
         message.success('Trackable created!');
         getTrackables(setTrackables);
       })
-      .catch((error) => {
+      .catch(() => {
         message.error('An error happened');
-        console.log(`Error: ${error.message}`);
       }, []);
   }
 
@@ -41,6 +40,7 @@ function Drawer({ onClose, open, setTrackables }) {
       .then(() => {
         addTrackable(newTrackable);
         onClose();
+        form.resetFields();
       });
   };
 
@@ -52,7 +52,7 @@ function Drawer({ onClose, open, setTrackables }) {
       open={open}
       bodyStyle={{ paddingBottom: 80 }}
     >
-      <Form layout="vertical" onFinish={submitForm} initialValues={{ color: '#ff9922' }}>
+      <Form form={form} layout="vertical" onFinish={submitForm} initialValues={{ color: '#599191' }}>
         <Form.Item
           name="name"
           label="What would you like to track?"
@@ -80,13 +80,13 @@ function Drawer({ onClose, open, setTrackables }) {
             <Input type="text" />
           </Form.Item>
         ) : '' }
-        <Form.Item
+        <ColorPickerWrapper
           name="color"
           label="Pick a color"
           rules={[{ required: true }]}
         >
           <ColorPicker type="color" />
-        </Form.Item>
+        </ColorPickerWrapper>
         <Button type="primary" htmlType="submit">
           Create
         </Button>
@@ -95,4 +95,4 @@ function Drawer({ onClose, open, setTrackables }) {
   );
 }
 
-export default Drawer;
+export default AddTrackable;
