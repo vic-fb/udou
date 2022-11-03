@@ -15,6 +15,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]); // TODO User profile
   const [date, setDate] = useState(dayjs());
   const [overview, setOverview] = useState(false);
+  console.log(`The current user ID is ${currentUser}`);
 
   const showOverview = () => {
     setOverview(true);
