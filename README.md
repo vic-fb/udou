@@ -8,7 +8,7 @@ Don't forget to clone the [udou-server repo](https://github.com/vic-fb/udou-serv
 
 ## API schema
 
-You can find all the working API routes in [this document](https://docs.google.com/document/d/1zNp3uwuJBbnv7twVMUb_M4-jy7sNyfh65h0pRNqLdYA/edit?usp=sharing).
+You can find the API routes in [this document](https://docs.google.com/document/d/1zNp3uwuJBbnv7twVMUb_M4-jy7sNyfh65h0pRNqLdYA/edit?usp=sharing).
 
 ## Scripts
 
