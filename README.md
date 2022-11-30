@@ -1,4 +1,19 @@
-# U do U
+# About UdoU
 
-We are all unique. UdoU is a customizable wellness tracker. You can create your own custom trackables, add entries and get insights.
+UdoU is a customizable wellness tracker app. It allows users to keep track of what matters to them by creating their own custom trackables and adding daily entries.
+
+## Motivation
+
+## Features
+
+## Tools used
+
+## Getting started
+
+## Database schema
+
+## API routes
+
+## Future features
+
 
