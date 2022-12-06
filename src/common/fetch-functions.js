@@ -1,7 +1,9 @@
 import { message } from 'antd';
 import { userId } from '../config';
 
-const request = (route) => fetch(route)
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+const request = (route) => fetch(apiUrl + route)
   .then((res) => res.json())
   .catch(() => message.error('An error happened'));
 
