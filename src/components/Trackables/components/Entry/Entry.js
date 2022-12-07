@@ -6,11 +6,11 @@ import { YesEntry, NoEntry } from './BooleanEntry';
 const componentTypes = {
   boolean: {
     component: BooleanInput,
-    renderValue: ({ boolean_value: value }) => (value ? <YesEntry /> : <NoEntry />),
+    renderValue: ({ booleanValue: value }) => (value ? <YesEntry /> : <NoEntry />),
   },
   quantitative: {
     component: QuantitativeInput,
-    renderValue: ({ quantitative_value: value, unit }) => (
+    renderValue: ({ quantitativeValue: value, unit }) => (
       <span>
         {`${value} ${unit}`}
       </span>
@@ -24,7 +24,7 @@ export default function Entry({
   const { component: Component, renderValue } = componentTypes[trackable.type];
 
   const addEntry = (value) => {
-    const newEntry = { trackable_id: trackable.id, date: date.toISOString().slice(0, 10), ...value };
+    const newEntry = { trackableId: trackable.id, date: date.toISOString().slice(0, 10), ...value };
     fetch('/entries', {
       method: 'POST',
       headers: {
@@ -34,10 +34,12 @@ export default function Entry({
     })
       .then((response) => {
         if (!response.ok) throw new Error('Network response was not OK');
+        console.log(response);
         message.success('Entry added');
         onChange(setDayEntries, date);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         message.error('An error happened');
       }, []);
   };

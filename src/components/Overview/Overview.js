@@ -32,7 +32,7 @@ export default function Overview({ overview, onClose }) {
           const foundEntry = entries.find((entry) => dayjs(entry.date).format('YYYY-MM-DD') === name);
           return {
             name: dateRange[0].add(index, 'day').format('MMM D'),
-            value: foundEntry ? foundEntry.quantitative_value : null,
+            value: foundEntry ? foundEntry.quantitativeValue : null,
           };
         });
         setData(dataEntries);

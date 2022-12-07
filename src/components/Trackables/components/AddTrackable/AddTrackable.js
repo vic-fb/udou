@@ -34,7 +34,7 @@ function AddTrackable({ onClose, open, setTrackables }) {
 
   const submitForm = (values) => {
     const newTrackable = values;
-    newTrackable.user_id = userId;
+    newTrackable.userId = userId;
     newTrackable.active = 1;
     form.validateFields()
       .then(() => {

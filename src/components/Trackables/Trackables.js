@@ -14,7 +14,7 @@ export default function Trackables({ date }) {
   const [dayEntries, setDayEntries] = useState([]);
   const [open, setOpen] = useState(false);
   const [trackables, setTrackables] = useState([]);
-  const getTrackableEntry = (id) => dayEntries.find((entry) => id === entry.trackable_id);
+  const getTrackableEntry = (id) => dayEntries.find((entry) => id === entry.trackableId);
   const isVisible = ({ active, id }) => active || !!getTrackableEntry(id);
 
   useEffect(() => {
