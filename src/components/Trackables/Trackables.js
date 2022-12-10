@@ -47,7 +47,7 @@ export default function Trackables({ date }) {
         {
           trackables.map((trackable) => isVisible(trackable) && (
             <Panel header={trackable.name} key={trackable.id + date} extra={<Dot color={trackable.color} />}>
-              <Entry trackable={trackable} entry={getTrackableEntry(trackable.id)} date={date} onChange={getEntries} setDayEntries={setDayEntries} />
+              <Entry trackable={trackable} entry={getTrackableEntry(trackable.id)} date={date} onSave={getEntries} setDayEntries={setDayEntries} />
             </Panel>
           ))
         }

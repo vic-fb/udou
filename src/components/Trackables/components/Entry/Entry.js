@@ -19,10 +19,9 @@ const componentTypes = {
 };
 
 export default function Entry({
-  trackable, date, entry, onChange, setDayEntries,
+  trackable, date, entry, onSave, setDayEntries,
 }) {
   const { component: Component, renderValue } = componentTypes[trackable.type];
-
   const addEntry = (value) => {
     const newEntry = { trackableId: trackable.id, date: date.toISOString().slice(0, 10), ...value };
     fetch('/entries', {
@@ -34,14 +33,10 @@ export default function Entry({
     })
       .then((response) => {
         if (!response.ok) throw new Error('Network response was not OK');
-        console.log(response);
-        message.success('Entry added');
-        onChange(setDayEntries, date);
+        onSave(date).then(setDayEntries);
+        return message.success('Entry added');
       })
-      .catch((error) => {
-        console.log(error);
-        message.error('An error happened');
-      }, []);
+      .catch(() => message.error('An error happened'), []);
   };
 
   return (
