@@ -3,16 +3,31 @@ import { userId } from '../config';
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
-const request = (route) => fetch(apiUrl + route)
+const get = (route) => fetch(apiUrl + route)
   .then((res) => res.json())
   .catch(() => message.error('An error happened'));
 
-export const getTrackables = () => request(`/trackables/${userId}`);
+const post = (route, payload) => fetch(apiUrl + route, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(payload),
+})
+  .then((res) => {
+    if (!res.ok) throw new Error('Network response was not OK');
+    return res.json();
+  })
+  .catch(() => message.error('An error happened'));
 
-export const getEntries = (date) => request(`/entries/${userId}/${date.toISOString().substring(0, 10)}`);
+export const getTrackables = () => get(`/trackables/${userId}`);
 
-export const getEntriesByDateRange = (trackableId, startDate, endDate) => request(`/entries/${trackableId}/${startDate}/${endDate}`);
+export const getEntries = (date) => get(`/entries/${userId}/${date.toISOString().substring(0, 10)}`);
 
-export const getQuantitativeTrackables = () => request(`/trackables/${userId}/quantitative`);
+export const getEntriesByDateRange = (trackableId, startDate, endDate) => get(`/entries/${trackableId}/${startDate}/${endDate}`);
 
-export const getCurrentUser = () => request(`/users/${userId}`);
+export const getQuantitativeTrackables = () => get(`/trackables/${userId}/quantitative`);
+
+export const getCurrentUser = () => get(`/users/${userId}`);
+
+export const addTrackable = (newTrackable) => post('/trackables', newTrackable);

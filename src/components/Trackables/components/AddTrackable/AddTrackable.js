@@ -4,7 +4,7 @@ import {
 import { useState } from 'react';
 import { ColorPicker, ColorPickerWrapper } from './AddTrackable.style';
 import { userId } from '../../../../config';
-import { getTrackables } from '../../../../common/fetch-functions';
+import { getTrackables, addTrackable } from '../../../../common/fetch-functions';
 
 const { Option } = Select;
 
@@ -14,31 +14,18 @@ function AddTrackable({ onClose, open, setTrackables }) {
   const toggleQuantitative = (value) => (value === 'quantitative' ? setQuantitative(true) : setQuantitative(false));
   const [form] = Form.useForm();
 
-  function addTrackable(newTrackable) {
-    fetch('/trackables', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newTrackable),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error('Network response was not OK');
-        message.success('Trackable created!');
-        getTrackables(setTrackables);
-      })
-      .catch(() => {
-        message.error('An error happened');
-      }, []);
-  }
-
   const submitForm = (values) => {
     const newTrackable = values;
     newTrackable.userId = userId;
     newTrackable.active = 1;
     form.validateFields()
       .then(() => {
-        addTrackable(newTrackable);
+        addTrackable(newTrackable)
+          .then(() => {
+            getTrackables(setTrackables);
+            return message.success('Trackable created!');
+          })
+          .catch(() => message.error('An error happened'));
         onClose();
         form.resetFields();
       });
