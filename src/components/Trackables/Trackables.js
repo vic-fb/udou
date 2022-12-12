@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import dayjs from 'dayjs';
+import { getEntries, getTrackables } from 'common/fetch-functions';
 import Entry from './components/Entry/Entry';
+import AddTrackable from './components/AddTrackable/AddTrackable';
 import {
   StyledCollapse, DateBar, Wrapper, Dot,
 } from './Trackables.style';
-import { getEntries, getTrackables } from '../../common/fetch-functions';
-import AddTrackable from './components/AddTrackable/AddTrackable';
 
 const { Panel } = StyledCollapse;
 

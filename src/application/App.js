@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { Container, Avatar } from './App.style';
+import { getCurrentUser } from 'common/fetch-functions';
 import Calendar from '../components/Calendar/Calendar';
 import Trackables from '../components/Trackables/Trackables';
-import './App.less';
 import Overview from '../components/Overview/Overview';
-import { getCurrentUser } from '../common/fetch-functions';
+import './App.less';
+import { Container, Avatar } from './App.style';
 
 const { Header, Content } = Layout;
 
@@ -15,7 +15,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]); // TODO User profile
   const [date, setDate] = useState(dayjs());
   const [overview, setOverview] = useState(false);
-  console.log(`The current user ID is ${currentUser}`);
+  console.log(`The current user ID is ${currentUser.id}`);
 
   const showOverview = () => {
     setOverview(true);

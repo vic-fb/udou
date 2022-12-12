@@ -1,10 +1,10 @@
 import { message } from 'antd';
-import { userId } from '../config';
+import { userId } from 'config';
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const get = (route) => fetch(apiUrl + route)
-  .then((res) => res.json())
+  .then((response) => response.json())
   .catch(() => message.error('An error happened'));
 
 const post = (route, payload) => fetch(apiUrl + route, {
@@ -14,9 +14,9 @@ const post = (route, payload) => fetch(apiUrl + route, {
   },
   body: JSON.stringify(payload),
 })
-  .then((res) => {
-    if (!res.ok) throw new Error('Network response was not OK');
-    return res.json();
+  .then((response) => {
+    if (!response.ok) throw new Error('Network response was not OK');
+    return response.json();
   })
   .catch(() => message.error('An error happened'));
 

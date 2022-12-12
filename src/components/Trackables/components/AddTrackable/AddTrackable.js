@@ -2,9 +2,9 @@ import {
   Button, Drawer as AntDrawer, Form, Input, message, Select,
 } from 'antd';
 import { useState } from 'react';
+import { getTrackables, addTrackable } from 'common/fetch-functions';
+import { userId } from 'config';
 import { ColorPicker, ColorPickerWrapper } from './AddTrackable.style';
-import { userId } from '../../../../config';
-import { getTrackables, addTrackable } from '../../../../common/fetch-functions';
 
 const { Option } = Select;
 

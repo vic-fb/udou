@@ -2,9 +2,9 @@ import {
   Drawer, DatePicker, Select,
 } from 'antd';
 import { useEffect, useState } from 'react';
-import dayjs, { } from 'dayjs';
-import { Chart } from './Chart';
-import { getEntriesByDateRange, getQuantitativeTrackables } from '../../common/fetch-functions';
+import dayjs from 'dayjs';
+import { getEntriesByDateRange, getQuantitativeTrackables } from 'common/fetch-functions';
+import { Chart } from './components/Chart';
 import { Wrapper } from './Overview.style';
 
 const { RangePicker } = DatePicker;
