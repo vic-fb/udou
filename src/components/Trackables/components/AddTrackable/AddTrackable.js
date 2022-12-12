@@ -3,7 +3,7 @@ import {
 } from 'antd';
 import { useState } from 'react';
 import { getTrackables, addTrackable } from 'common/fetch-functions';
-import { userId } from 'config';
+import { userId } from 'common/config';
 import { ColorPicker, ColorPickerWrapper } from './AddTrackable.style';
 
 const { Option } = Select;

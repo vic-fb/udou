@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Avatar as AntdAvatar } from 'antd';
-import { primaryColor } from '../config';
+import { primaryColor } from 'common/config';
 
 export const Container = styled.div`
   max-width: 1200px;

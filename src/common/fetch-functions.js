@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import { userId } from 'config';
+import { userId } from 'common/config';
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
