@@ -44,7 +44,7 @@ function App() {
         </Header>
         <Content>
           <Container>
-            <Trackables date={date} onChange={setDate} />
+            <Trackables date={date} onDateChange={setDate} />
             <Calendar date={date} onChange={setDate} showOverview={showOverview} />
           </Container>
         </Content>
