@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
-import dayjs from 'dayjs';
 import { getEntries, getTrackables } from 'common/fetch-functions';
 import Entry from './components/Entry/Entry';
+import DateBar from './components/DateBar/DateBar';
 import AddTrackable from './components/AddTrackable/AddTrackable';
 import {
-  StyledCollapse, DateBar, Wrapper, Dot,
+  StyledCollapse, Wrapper, Dot,
 } from './Trackables.style';
 
 const { Panel } = StyledCollapse;
 
-export default function Trackables({ date }) {
+export default function Trackables({ date, onDateChange }) {
   const [dayEntries, setDayEntries] = useState([]);
   const [open, setOpen] = useState(false);
   const [trackables, setTrackables] = useState([]);
@@ -37,9 +37,7 @@ export default function Trackables({ date }) {
   return (
     <Wrapper>
       <AddTrackable open={open} onClose={onClose} setTrackables={setTrackables} />
-      <DateBar>
-        {dayjs(date).format('dddd, MMMM D, YYYY')}
-      </DateBar>
+      <DateBar date={date} onChange={onDateChange} />
       <StyledCollapse
         bordered={false}
         defaultActiveKey={[1]}

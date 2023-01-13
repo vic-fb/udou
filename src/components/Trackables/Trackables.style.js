@@ -27,13 +27,6 @@ export const StyledCollapse = styled(AntdCollapse)`
   margin-top: 15px;
 `;
 
-export const DateBar = styled.div`
-  background-color: lightgrey;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px;
-`;
-
 export const Dot = styled.div`
   background-color: ${(props) => props.color};
   border-radius: 50%;
