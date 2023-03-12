@@ -24,7 +24,7 @@ export default function Entry({
   const { component: Component, renderValue } = componentTypes[trackable.type];
   const addEntry = (value) => {
     const newEntry = { trackableId: trackable.id, date: date.toISOString().slice(0, 10), ...value };
-    fetch('/entries', {
+    fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/entries`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
