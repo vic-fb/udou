@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { getEntries, getTrackables } from 'common/fetch-functions';
 import Entry from './components/Entry/Entry';
 import DateBar from './components/DateBar/DateBar';
-import AddTrackable from './components/AddTrackable/AddTrackable';
+import TrackableForm from './components/AddTrackable/TrackableForm';
 import {
   StyledCollapse, Wrapper, Dot,
 } from './Trackables.style';
@@ -36,7 +36,7 @@ export default function Trackables({ date, onDateChange }) {
   };
   return (
     <Wrapper>
-      <AddTrackable open={open} onClose={onClose} setTrackables={setTrackables} />
+      <TrackableForm open={open} onClose={onClose} setTrackables={setTrackables} />
       <DateBar date={date} onChange={onDateChange} />
       <StyledCollapse
         bordered={false}

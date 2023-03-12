@@ -4,11 +4,11 @@ import {
 import { useState } from 'react';
 import { getTrackables, addTrackable } from 'common/fetch-functions';
 import { userId } from 'common/config';
-import { ColorPicker, ColorPickerWrapper } from './AddTrackable.style';
+import { ColorPicker, ColorPickerWrapper } from './TrackableForm.style';
 
 const { Option } = Select;
 
-function AddTrackable({ onClose, open, setTrackables }) {
+function TrackableForm({ onClose, open, setTrackables }) {
   const [quantitative, setQuantitative] = useState(false);
 
   const toggleQuantitative = (value) => (value === 'quantitative' ? setQuantitative(true) : setQuantitative(false));
@@ -82,4 +82,4 @@ function AddTrackable({ onClose, open, setTrackables }) {
   );
 }
 
-export default AddTrackable;
+export default TrackableForm;
