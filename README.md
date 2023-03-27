@@ -1,5 +1,7 @@
 # About UdoU
-UdoU is a customizable wellness tracker app. It allows users to keep track of what matters to them by creating their own custom trackables and adding daily entries. Check it out [here](https://udou.herokuapp.com/).
+UdoU is a customizable wellness tracker app. It allows users to keep track of what matters to them by creating their own custom trackables and adding daily entries.
+
+### Check it out [here](https://udou.herokuapp.com/).
 
 ## Tools
 [ESlint](https://eslint.org/docs/latest/user-guide/getting-started) - 
