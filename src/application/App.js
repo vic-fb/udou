@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Layout } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { getCurrentUser } from 'common/fetch-functions';
+// import { getCurrentUser } from 'common/fetch-functions';
 import Calendar from '../components/Calendar/Calendar';
 import Trackables from '../components/Trackables/Trackables';
 import Overview from '../components/Overview/Overview';
@@ -12,11 +12,9 @@ import { Container, Avatar } from './App.style';
 const { Header, Content } = Layout;
 
 function App() {
-  const [currentUser, setCurrentUser] = useState([]); // TODO User profile
+  // const [currentUser, setCurrentUser] = useState([]); // TODO User profile
   const [date, setDate] = useState(dayjs());
   const [overview, setOverview] = useState(false);
-  console.log(currentUser);
-
   const showOverview = () => {
     setOverview(true);
   };
@@ -26,8 +24,9 @@ function App() {
   };
 
   useEffect(() => {
-    getCurrentUser()
-      .then(setCurrentUser);
+    // getCurrentUser()
+    //   .then(setCurrentUser);
+    // console.log(`User registration and login not implemented yet, currently using user ${currentUser.id}`);
   }, []);
 
   return (

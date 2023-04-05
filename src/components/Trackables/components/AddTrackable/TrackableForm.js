@@ -21,8 +21,9 @@ function TrackableForm({ onClose, open, setTrackables }) {
     form.validateFields()
       .then(() => {
         addTrackable(newTrackable)
-          .then(() => {
-            getTrackables(setTrackables);
+          .then(() => getTrackables())
+          .then((trackables) => {
+            setTrackables(trackables);
             return message.success('Trackable created!');
           })
           .catch(() => message.error('An error happened'));
