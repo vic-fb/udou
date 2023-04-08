@@ -56,7 +56,7 @@ function TrackableForm({ onClose, open, setTrackables }) {
           <Select placeholder="Please select an option" onChange={toggleQuantitative}>
             <Option value="boolean">I would like to answer yes or no</Option>
             <Option value="quantitative">I would like to add a measurement</Option>
-            <Option value="rating">I would like to rate it</Option>
+            <Option value="rating" disabled>I would like to rate it</Option>
           </Select>
         </Form.Item>
         { quantitative ? (
