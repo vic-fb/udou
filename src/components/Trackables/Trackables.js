@@ -10,10 +10,11 @@ import {
 
 const { Panel } = StyledCollapse;
 
-export default function Trackables({ date, onDateChange }) {
+function Trackables({ date, onDateChange }) {
   const [dayEntries, setDayEntries] = useState([]);
   const [open, setOpen] = useState(false);
   const [trackables, setTrackables] = useState([]);
+
   const getTrackableEntry = (id) => dayEntries.find((entry) => id === entry.trackableId);
   const isVisible = ({ active, id }) => active || !!getTrackableEntry(id);
 
@@ -27,21 +28,14 @@ export default function Trackables({ date, onDateChange }) {
       .then(setTrackables);
   }, []);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
+  const showForm = () => setOpen(true);
+  const hideForm = () => setOpen(false);
 
-  const onClose = () => {
-    setOpen(false);
-  };
   return (
     <Wrapper>
-      <TrackableForm open={open} onClose={onClose} setTrackables={setTrackables} />
+      <TrackableForm open={open} onClose={hideForm} setTrackables={setTrackables} />
       <DateBar date={date} onChange={onDateChange} />
-      <StyledCollapse
-        bordered={false}
-        defaultActiveKey={[1]}
-      >
+      <StyledCollapse bordered={false} defaultActiveKey={[1]}>
         {
           trackables.map((trackable) => isVisible(trackable) && (
             <Panel header={trackable.name} key={trackable.id + date} extra={<Dot color={trackable.color} />}>
@@ -50,7 +44,9 @@ export default function Trackables({ date, onDateChange }) {
           ))
         }
       </StyledCollapse>
-      <Button type="dashed" onClick={showDrawer}>Add trackable</Button>
+      <Button type="dashed" onClick={showForm}>Add trackable</Button>
     </Wrapper>
   );
 }
+
+export default Trackables;

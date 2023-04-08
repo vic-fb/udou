@@ -4,7 +4,7 @@ import {
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { getEntriesByDateRange, getQuantitativeTrackables } from 'common/services';
-import { Chart } from './components/Chart';
+import Chart from './components/Chart';
 import { Wrapper } from './Overview.style';
 
 const { RangePicker } = DatePicker;

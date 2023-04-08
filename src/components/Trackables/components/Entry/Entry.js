@@ -18,7 +18,7 @@ const componentTypes = {
   },
 };
 
-export default function Entry({
+function Entry({
   trackable, date, entry, onSave, setDayEntries,
 }) {
   const { component: Component, renderValue } = componentTypes[trackable.type];
@@ -47,3 +47,5 @@ export default function Entry({
     </div>
   );
 }
+
+export default Entry;

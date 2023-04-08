@@ -1,6 +1,6 @@
 import { Radio, Form } from 'antd';
 
-export default function BooleanInput({ addEntry }) {
+function BooleanInput({ addEntry }) {
   return (
     <Form onValuesChange={addEntry}>
       <Form.Item name="booleanValue" required>
@@ -12,3 +12,5 @@ export default function BooleanInput({ addEntry }) {
     </Form>
   );
 }
+
+export default BooleanInput;

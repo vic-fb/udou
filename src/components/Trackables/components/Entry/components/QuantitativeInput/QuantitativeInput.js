@@ -4,7 +4,7 @@ import {
 import { CheckOutlined } from '@ant-design/icons';
 import { StyledInput } from './QuantitativeInput.style';
 
-export default function QuantitativeInput({ addEntry, unit }) {
+function QuantitativeInput({ addEntry, unit }) {
   const submitForm = ({ quantitativeValue: value }) => {
     addEntry({ quantitativeValue: Number(value) });
   };
@@ -24,3 +24,5 @@ export default function QuantitativeInput({ addEntry, unit }) {
     </Form>
   );
 }
+
+export default QuantitativeInput;

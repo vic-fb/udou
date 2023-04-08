@@ -2,7 +2,7 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
 
-export function Chart({ data }) { // label={yLabel}
+function Chart({ data }) { // label={yLabel}
   return (
     <ResponsiveContainer width="100%" height="50%">
       <LineChart
@@ -26,3 +26,5 @@ export function Chart({ data }) { // label={yLabel}
     </ResponsiveContainer>
   );
 }
+
+export default Chart;
