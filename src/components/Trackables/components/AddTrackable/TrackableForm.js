@@ -15,7 +15,7 @@ function TrackableForm({ onClose, open, setTrackables }) {
   const toggleQuantitative = (value) => (value === 'quantitative' ? setQuantitative(true) : setQuantitative(false));
 
   const submitForm = (values) => {
-    const newTrackable = values;
+    const newTrackable = { ...values };
     newTrackable.userId = userId;
     newTrackable.active = 1;
     form.validateFields()
