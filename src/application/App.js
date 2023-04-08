@@ -13,13 +13,10 @@ const { Header, Content } = Layout;
 function App() {
   const [date, setDate] = useState(dayjs());
   const [overview, setOverview] = useState(false);
-  const showOverview = () => {
-    setOverview(true);
-  };
 
-  const closeOverview = () => {
-    setOverview(false);
-  };
+  const showOverview = () => setOverview(true);
+
+  const closeOverview = () => setOverview(false);
 
   return (
     <div className="App">

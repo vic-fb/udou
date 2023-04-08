@@ -10,9 +10,9 @@ const { Option } = Select;
 
 function TrackableForm({ onClose, open, setTrackables }) {
   const [quantitative, setQuantitative] = useState(false);
+  const [form] = Form.useForm();
 
   const toggleQuantitative = (value) => (value === 'quantitative' ? setQuantitative(true) : setQuantitative(false));
-  const [form] = Form.useForm();
 
   const submitForm = (values) => {
     const newTrackable = values;
