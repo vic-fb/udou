@@ -3,7 +3,7 @@ import {
 } from 'antd';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { getEntriesByDateRange, getQuantitativeTrackables } from 'common/fetch-functions';
+import { getEntriesByDateRange, getQuantitativeTrackables } from 'common/services';
 import { Chart } from './components/Chart';
 import { Wrapper } from './Overview.style';
 

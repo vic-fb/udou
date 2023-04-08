@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
-import { getEntries, getTrackables } from 'common/fetch-functions';
+import { getEntries, getTrackables } from 'common/services';
 import Entry from './components/Entry/Entry';
 import DateBar from './components/DateBar/DateBar';
 import TrackableForm from './components/AddTrackable/TrackableForm';

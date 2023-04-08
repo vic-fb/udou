@@ -2,7 +2,7 @@ import {
   Button, Drawer as AntDrawer, Form, Input, message, Select,
 } from 'antd';
 import { useState } from 'react';
-import { getTrackables, addTrackable } from 'common/fetch-functions';
+import { getTrackables, addTrackable } from 'common/services';
 import { userId } from 'common/config';
 import { ColorPicker, ColorPickerWrapper } from './TrackableForm.style';
 
