@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  min-width: 295px;
   
   @media (min-width: 900px) {
     width: 40%;

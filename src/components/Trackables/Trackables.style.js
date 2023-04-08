@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: 295px;
   
   @media (min-width: 900px) {
     padding: 40px 40px 0 0;
