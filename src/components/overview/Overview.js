@@ -1,9 +1,8 @@
-import {
-  Drawer, DatePicker, Select,
-} from 'antd';
+import { DatePicker, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { getEntriesByDateRange, getQuantitativeTrackables } from 'common/services';
+import { Drawer } from 'common/components/Drawer.style';
 import Chart from './components/Chart';
 import { Wrapper } from './Overview.style';
 

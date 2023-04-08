@@ -12,7 +12,6 @@ export const ColorPicker = styled(Input)`
   height: 56px !important;
   border: none;
   cursor: pointer;
-  
 `;
 
 export const ColorPickerWrapper = styled(Form.Item)`

@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 295px;
-  
   @media (min-width: 900px) {
     width: 40%;
     margin-top: 40px;

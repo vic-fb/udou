@@ -1,9 +1,10 @@
 import {
-  Button, Drawer as AntDrawer, Form, Input, message, Select,
+  Button, Form, Input, message, Select,
 } from 'antd';
 import { useState } from 'react';
 import { getTrackables, addTrackable } from 'common/services';
 import { userId } from 'common/config';
+import { Drawer } from '../../../../common/components/Drawer.style';
 import { ColorPicker, ColorPickerWrapper } from './TrackableForm.style';
 
 const { Option } = Select;
@@ -33,9 +34,8 @@ function TrackableForm({ onClose, open, setTrackables }) {
   };
 
   return (
-    <AntDrawer
+    <Drawer
       title="Create a new trackable"
-      width={720}
       onClose={onClose}
       open={open}
       bodyStyle={{ paddingBottom: 80 }}
@@ -79,7 +79,7 @@ function TrackableForm({ onClose, open, setTrackables }) {
           Create
         </Button>
       </Form>
-    </AntDrawer>
+    </Drawer>
   );
 }
 
