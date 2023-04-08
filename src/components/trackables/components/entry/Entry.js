@@ -1,7 +1,7 @@
 import { message } from 'antd';
-import BooleanInput from './components/BooleanInput';
-import QuantitativeInput from './components/QuantitativeInput/QuantitativeInput';
-import { YesEntry, NoEntry } from './components/BooleanEntry';
+import BooleanInput from './components/boolean-input/BooleanInput';
+import QuantitativeInput from './components/quantitative-input/QuantitativeInput';
+import { YesEntry, NoEntry } from './components/boolean-entry/BooleanEntry';
 
 const componentTypes = {
   boolean: {

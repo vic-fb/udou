@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import { getEntries, getTrackables } from 'common/services';
-import Entry from './components/Entry/Entry';
-import DateBar from './components/DateBar/DateBar';
-import TrackableForm from './components/AddTrackable/TrackableForm';
+import Entry from './components/entry/Entry';
+import DateBar from './components/date-bar/DateBar';
+import TrackableForm from './components/trackable-form/TrackableForm';
 import {
   StyledCollapse, Wrapper, Dot,
 } from './Trackables.style';

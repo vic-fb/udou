@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Layout } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import Calendar from '../components/Calendar/Calendar';
-import Trackables from '../components/Trackables/Trackables';
-import Overview from '../components/Overview/Overview';
+import Calendar from '../components/calendar/Calendar';
+import Trackables from '../components/trackables/Trackables';
+import Overview from '../components/overview/Overview';
 import './App.less';
 import { Container, Avatar } from './App.style';
 
