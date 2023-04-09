@@ -1,13 +1,12 @@
-import { CaretLeftOutlined, CaretRightOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { Wrapper } from './DateBar.style';
+import { Wrapper, CaretLeft, CaretRight } from './DateBar.style';
 
 function DateBar({ date, onChange }) {
   return (
     <Wrapper>
-      <CaretLeftOutlined onClick={() => onChange(date.subtract(1, 'day'))} />
+      <CaretLeft onClick={() => onChange(date.subtract(1, 'day'))} />
       {dayjs(date).format('dddd, MMMM D, YYYY')}
-      <CaretRightOutlined onClick={() => onChange(date.add(1, 'day'))} />
+      <CaretRight onClick={() => onChange(date.add(1, 'day'))} />
     </Wrapper>
   );
 }
