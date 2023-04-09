@@ -38,7 +38,6 @@ function TrackableForm({ onClose, open, setTrackables }) {
       title="Create a new trackable"
       onClose={onClose}
       open={open}
-      bodyStyle={{ paddingBottom: 80 }}
     >
       <Form form={form} layout="vertical" onFinish={submitForm} initialValues={{ color: '#599191' }}>
         <Form.Item

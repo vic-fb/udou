@@ -1,12 +1,9 @@
-import { DatePicker, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import { getEntriesByDateRange, getQuantitativeTrackables } from 'common/services';
 import { Drawer } from 'common/components/Drawer.style';
 import Chart from './components/Chart';
-import { Wrapper } from './Overview.style';
-
-const { RangePicker } = DatePicker;
+import { Wrapper, Select, DateRangePicker } from './Overview.style';
 
 export default function Overview({ overview, onClose }) {
   const [options, setOptions] = useState([]);
@@ -46,8 +43,8 @@ export default function Overview({ overview, onClose }) {
       width={720}
     >
       <Wrapper>
-        <RangePicker value={dateRange} style={{ width: '50%' }} onChange={setDateRange} allowClear={false} />
-        <Select options={options} placeholder="Select a trackable" style={{ width: '50%' }} onChange={setTrackableId} />
+        <DateRangePicker value={dateRange} onChange={setDateRange} allowClear={false} />
+        <Select options={options} placeholder="Select a trackable" onChange={setTrackableId} />
         {/* // TODO get value as object instead of id so that I can use unit and color for the Chart */}
       </Wrapper>
       {trackableId && <Chart data={data} dateRange={dateRange} />}

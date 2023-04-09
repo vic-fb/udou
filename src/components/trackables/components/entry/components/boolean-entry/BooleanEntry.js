@@ -1,11 +1,11 @@
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
+import { CrossCircle, CheckCircle, Text } from './BooleanEntry.style';
 
 export function YesEntry() {
   return (
     <Space>
-      <CheckCircleOutlined style={{ color: 'lightgrey', fontSize: '20px' }} />
-      <p style={{ margin: 0 }}>Yes</p>
+      <CheckCircle />
+      <Text>Yes</Text>
     </Space>
   );
 }
@@ -13,8 +13,8 @@ export function YesEntry() {
 export function NoEntry() {
   return (
     <Space>
-      <CloseCircleOutlined style={{ color: 'lightgrey', fontSize: '20px' }} />
-      <p style={{ margin: 0 }}>No</p>
+      <CrossCircle />
+      <Text>No</Text>
     </Space>
   );
 }

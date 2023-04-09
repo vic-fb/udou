@@ -2,6 +2,9 @@ import { Drawer as AntDrawer } from 'antd';
 import styled from 'styled-components';
 
 export const Drawer = styled(AntDrawer)`
+  .ant-drawer-body {
+    padding-bottom: 80px;
+  }
   .ant-drawer-content-wrapper {
     width: 100% !important;
     min-width: 295px;
