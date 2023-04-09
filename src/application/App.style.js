@@ -10,8 +10,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 25px;
   width: 100%;
+  padding: 0 25px 40px;
+
   .ant-layout-content {
     margin-bottom: 40px;
   }
