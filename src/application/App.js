@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { Layout } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 import dayjs from 'dayjs';
 import Calendar from '../components/calendar/Calendar';
 import Trackables from '../components/trackables/Trackables';
 import Overview from '../components/overview/Overview';
 import './App.less';
-import { Container, Avatar } from './App.style';
+import {
+  Container, Avatar, Logo, BrandHeader, HeaderContainer,
+} from './App.style';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 function App() {
   const [date, setDate] = useState(dayjs());
@@ -18,17 +20,15 @@ function App() {
   const hideOverview = () => setOverview(false);
 
   return (
-    <div className="App">
+    <div>
       <Layout>
         <Overview overview={overview} onClose={hideOverview} />
-        <Header className="app-header">
-          <Container>
-            <div>
-              <span className="logo">UdoU</span>
-            </div>
+        <BrandHeader>
+          <HeaderContainer>
+            <Logo>UdoU</Logo>
             <Avatar icon={<UserOutlined />} />
-          </Container>
-        </Header>
+          </HeaderContainer>
+        </BrandHeader>
         <Content>
           <Container>
             <Trackables date={date} onDateChange={setDate} />
