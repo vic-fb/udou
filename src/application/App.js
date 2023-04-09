@@ -15,13 +15,12 @@ function App() {
   const [overview, setOverview] = useState(false);
 
   const showOverview = () => setOverview(true);
-
-  const closeOverview = () => setOverview(false);
+  const hideOverview = () => setOverview(false);
 
   return (
     <div className="App">
       <Layout>
-        <Overview overview={overview} onClose={closeOverview} />
+        <Overview overview={overview} onClose={hideOverview} />
         <Header className="app-header">
           <Container>
             <div>
