@@ -2,6 +2,7 @@ import { message } from 'antd';
 import BooleanInput from './components/boolean-input/BooleanInput';
 import QuantitativeInput from './components/quantitative-input/QuantitativeInput';
 import { YesEntry, NoEntry } from './components/boolean-entry/BooleanEntry';
+import { post } from '../../../../common/http';
 
 const componentTypes = {
   boolean: {
@@ -24,19 +25,10 @@ function Entry({
   const { component: Component, renderValue } = componentTypes[trackable.type];
   const addEntry = (value) => {
     const newEntry = { trackableId: trackable.id, date: date.toISOString().slice(0, 10), ...value };
-    fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/entries`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newEntry),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error('Network response was not OK');
-        onSave(date).then(setDayEntries);
-        return message.success('Entry added');
-      })
-      .catch(() => message.error('An error happened'), []);
+    post('/entries', newEntry).then(() => {
+      message.success('Entry added');
+      onSave(date).then(setDayEntries);
+    });
   };
 
   return (
