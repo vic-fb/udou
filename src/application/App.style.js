@@ -44,6 +44,7 @@ export const Logo = styled.span`
 export const BrandHeader = styled(Header)`
   background-color: #282c34;
   min-height: 50px;
+  min-width: 300px;
   padding: 0 10px;
   display: flex;
   font-size: calc(20px + 2vmin);

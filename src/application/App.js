@@ -5,6 +5,8 @@ import dayjs from 'dayjs';
 import Calendar from '../components/calendar/Calendar';
 import Trackables from '../components/trackables/Trackables';
 import Overview from '../components/overview/Overview';
+import ErrorBoundary from './components/ErrorBoundary';
+import ErrorView from './components/error-view/ErrorView';
 import './App.less';
 import {
   Container, Avatar, Logo, BrandHeader, HeaderContainer,
@@ -30,10 +32,12 @@ function App() {
           </HeaderContainer>
         </BrandHeader>
         <Content>
-          <Container>
-            <Trackables date={date} onDateChange={setDate} />
-            <Calendar date={date} onChange={setDate} showOverview={showOverview} />
-          </Container>
+          <ErrorBoundary fallback={<ErrorView />}>
+            <Container>
+              <Trackables date={date} onDateChange={setDate} />
+              <Calendar date={date} onChange={setDate} showOverview={showOverview} />
+            </Container>
+          </ErrorBoundary>
         </Content>
       </Layout>
     </div>
